@@ -24,7 +24,7 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [formContainer, isformContainer] = useState(false);
+  const [formContainer, setformContainer] = useState(false);
 
   const STATIC_CREDENTIALS = {
     email: "pooja@gmail.com",
