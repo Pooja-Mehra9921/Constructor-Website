@@ -6,8 +6,8 @@ import logo from "../../images/logo.png"
 const Header =()=>{
     return(
         <>
-       <Box sx={{ flexGrow: 1 }}>
-      <AppBar style={{backgroundColor:"white", padding:"5px", boxShadow:"0px 0px 20px grey"}} position="static">
+       <Box sx={{ flexGrow: 1, zIndex: 3}}>
+      <AppBar style={{backgroundColor:"white", padding:"5px", boxShadow:"0px 0px 20px grey", zIndex: 1}} position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
             <img style={{height:"50px"}} className="logo" src={logo} alt="logo" />

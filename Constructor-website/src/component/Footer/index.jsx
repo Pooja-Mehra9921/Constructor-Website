@@ -1,35 +1,25 @@
-import React from 'react';
-import { Container, Box, Typography, Link } from '@mui/material';
+import React from "react";
+import { Box, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
     <Box
+      component="footer"
       sx={{
-        backgroundColor: '#333',
-        color: '#fff',
-        padding: '20px 0',
-        marginTop: 'auto',
+        width: "100%", // Ensures full width
+        backgroundColor: "black", // Same color as the header
+        color: "#fff", // White text for readability
+        padding: "10px 20px", // Padding for spacing
+        position: "relative", // Ensures it stays at the bottom
+        textAlign: "center", // Center-align text
       }}
     >
-      <Container maxWidth="lg">
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="body1">
-            &copy; {new Date().getFullYear()} Your Company Name. All Rights Reserved.
-          </Typography>
-
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Link href="#" color="inherit" underline="hover">
-              Privacy Policy
-            </Link>
-            <Link href="#" color="inherit" underline="hover">
-              Terms of Service
-            </Link>
-            <Link href="#" color="inherit" underline="hover">
-              Contact Us
-            </Link>
-          </Box>
-        </Box>
-      </Container>
+      <Typography variant="body2">
+        © 2024 Your Company Name. All Rights Reserved.
+      </Typography>
+      <Typography variant="body2">
+        Privacy Policy | Terms of Service | Contact Us
+      </Typography>
     </Box>
   );
 };
