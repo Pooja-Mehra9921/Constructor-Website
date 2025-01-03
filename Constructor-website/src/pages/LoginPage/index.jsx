@@ -29,11 +29,11 @@ const LoginPage = () => {
   const [isForgotSubmit, setIsForgotSubmit] = useState(false); // State for forgot password validation
 
   // Mock registered emails
-  const REGISTERED_EMAILS = ["pooja@gmail.com"];
+  const REGISTERED_EMAILS = ["user@gmail.com"];
 
   const STATIC_CREDENTIALS = {
-    email: "pooja@gmail.com",
-    password: "pooja123",
+    email: "user@gmail.com",
+    password: "user123",
   };
 
   const handlePasswordToggle = () => {
