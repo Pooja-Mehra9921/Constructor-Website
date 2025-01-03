@@ -10,15 +10,16 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Divider } from "@mui/material";
+import Plan2D from "../../component/2DPlan";
+import Plan3D from "../../component/3DPlan";
+import Estimation from "../../component/EstimationCalculation";
+import TermsConditions from "../../component/TermsCondition";
 
 const drawerWidth = 240;
 
-// Components for each tab
+// Components for Default Home
 const Home = () => <Typography variant="h6">Welcome to the Home Page!</Typography>;
-const Plan2D = () => <Typography variant="h6">This is the 2D Plan Section.</Typography>;
-const Plan3D = () => <Typography variant="h6">This is the 3D Plan Section.</Typography>;
-const Estimation = () => <Typography variant="h6">This is  Estimation and calculatio Section.</Typography>;
-const TermsConditions = () => <Typography variant="h6">This is the Terms & Condition Section.</Typography>;
+
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("Home");
