@@ -9,11 +9,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Divider } from "@mui/material";
+import { Divider, IconButton } from "@mui/material";
 import Plan2D from "../../component/2DPlan";
 import Plan3D from "../../component/3DPlan";
 import Estimation from "../../component/EstimationCalculation";
 import TermsConditions from "../../component/TermsCondition";
+import logo from "../../images/logo.png"
+
 
 const drawerWidth = 240;
 
@@ -42,12 +44,18 @@ const Dashboard = () => {
         position="fixed"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          backgroundColor: "#2196f3",
+          backgroundColor: "white",
         }}
       >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Sidebar Example
+        <Toolbar variant="dense">
+        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+            <img style={{height:"50px"}} className="logo" src={logo} alt="logo" />
+          </IconButton>
+          <Typography variant="h6" color="#0082c9" component="div">
+            Company Name
+            <Typography>
+            This is s dummy text for company slogan
+            </Typography>
           </Typography>
         </Toolbar>
       </AppBar>
