@@ -5,6 +5,9 @@ import ForgotPassword from "./src/component/ForgetPassword";
 import SignupPage from "./src/pages/SignupPage";
 import Dashboard from "./src/pages/Dashboard";
 
+
+
+
 const App = () => {
   return (
     <>
