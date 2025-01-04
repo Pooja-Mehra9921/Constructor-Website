@@ -15,9 +15,6 @@ const images = [
   ];
 
 
-const handleSelectedAll =()=>{
-    console.log("clicked-----");
-}
 
 const TwoDPlan =()=>{
     return(
@@ -27,12 +24,14 @@ const TwoDPlan =()=>{
 
 <Carousel images={images}/>
 <Box className="option-container"> 
-    <Typography onClick={handleSelectedAll} className="selectedtext">Selected All</Typography>
+    <Typography  className="selectedtext">Selected All</Typography>
+    <Box className="option-first">
+        <input type="checkbox" />
+    </Box>
 </Box>
 
 </Box>
         </Box>
-        This is a Two d plan component
         </>
     )
 };
