@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardContent, TextField, Button, Checkbox, Avatar, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 const UserManagement = () => {
@@ -9,6 +9,7 @@ const UserManagement = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [userToUpdate, setUserToUpdate] = useState(null);
   const [error, setError] = useState({ name: '', photo: '' });
+  const fileInputRef = useRef();
 
   const validateInputs = () => {
     let isValid = true;
@@ -18,11 +19,8 @@ const UserManagement = () => {
       errorObj.name = 'Name is required';
       isValid = false;
     }
-    if (!newUser.photo.trim()) {
-      errorObj.photo = 'Photo URL is required';
-      isValid = false;
-    } else if (!/^https?:\/\/.+$/.test(newUser.photo.trim())) {
-      errorObj.photo = 'Photo URL must be valid';
+    if (!newUser.photo) {
+      errorObj.photo = 'Photo is required';
       isValid = false;
     }
 
@@ -37,6 +35,11 @@ const UserManagement = () => {
     setUsers([...users, newUserWithId]);
     setNewUser({ name: '', photo: '' });
     setError({ name: '', photo: '' });
+
+    // Reset the file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleUpdateUser = (id) => {
@@ -90,6 +93,17 @@ const UserManagement = () => {
     }
   };
 
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewUser({ ...newUser, photo: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div style={{ padding: '20px' }}>
       <Card style={{ marginBottom: '20px', padding: '20px' }}>
@@ -102,20 +116,26 @@ const UserManagement = () => {
             helperText={error.name}
             style={{ marginRight: '10px' }}
           />
-          <TextField
-            label="Photo URL"
-            value={newUser.photo}
-            onChange={(e) => setNewUser({ ...newUser, photo: e.target.value })}
-            error={!!error.photo}
-            helperText={error.photo}
+          <input
+            accept="image/*"
+            type="file"
+            onChange={handlePhotoUpload}
+            ref={fileInputRef}
             style={{ marginRight: '10px' }}
           />
+          <span style={{ color: 'red' }}>{error.photo}</span>
           <Button variant="contained" color="primary" onClick={handleAddUser}>
             Add User
           </Button>
         </CardContent>
       </Card>
-      <Button variant="contained" color="secondary" onClick={handleSelectAll} style={{ marginBottom: '10px' }}>
+      <Button 
+        variant="contained" 
+        color="secondary" 
+        onClick={handleSelectAll} 
+        style={{ marginBottom: '10px' }}
+        disabled={users.length === 0}
+      >
         {selectAll ? 'Deselect All' : 'Select All'}
       </Button>
       {selectedUsers.length > 0 && (
@@ -159,14 +179,11 @@ const UserManagement = () => {
               fullWidth
               margin="normal"
             />
-            <TextField
-              label="Photo URL"
-              value={newUser.photo}
-              onChange={(e) => setNewUser({ ...newUser, photo: e.target.value })}
-              error={!!error.photo}
-              helperText={error.photo}
-              fullWidth
-              margin="normal"
+            <input
+              accept="image/*"
+              type="file"
+              onChange={handlePhotoUpload}
+              style={{ marginTop: '10px' }}
             />
           </DialogContent>
           <DialogActions>
