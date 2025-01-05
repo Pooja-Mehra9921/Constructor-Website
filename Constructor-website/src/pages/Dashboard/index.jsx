@@ -36,7 +36,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}}>
       <CssBaseline />
 
       {/* Header */}
